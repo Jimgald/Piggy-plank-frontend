@@ -76,6 +76,7 @@ function Feed() {
   return (
     <main className="flex-1 overflow-y-auto px-4 py-4 scrollbar-hide">
       <div className="flex flex-col gap-4">
+        <MotivationalPiggy />
         {WORKOUTS.map((workout) => (
           <WorkoutCard key={workout.id} workout={workout} />
         ))}
@@ -170,5 +171,30 @@ function BottomNav() {
         Perfil
       </button>
     </nav>
+  );
+}
+function MotivationalPiggy() {
+  const quotes = [
+    "Menos mirar la pantalla y más apretar el core, que te me ablandas.",
+    "Un día más sin entrenar y pasas de atleta a panceta. ¡Muévete!",
+    "Ese saco de boxeo no se va a golpear solo. ¡A darle!",
+    "La gravedad hoy está fuerte, pero tú en el rocódromo más. ¿O no?",
+    "Sudor hoy, orgullo mañana. Venga, dame un entreno.",
+  ];
+  
+  // Elige una frase al azar cada vez que carga el componente
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+  return (
+    <div className="mb-6 flex items-start gap-3 px-2">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-orange-100 text-2xl shadow-sm border border-orange-200">
+        🐷
+      </div>
+      <div className="relative rounded-2xl rounded-tl-none bg-white p-3 shadow-sm border border-gray-100">
+        <p className="text-sm font-medium text-gray-700 italic">"{randomQuote}"</p>
+        {/* Triangulito del bocadillo */}
+        <div className="absolute -left-2 top-0 h-4 w-4 bg-white border-l border-b border-gray-100" style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}></div>
+      </div>
+    </div>
   );
 }
