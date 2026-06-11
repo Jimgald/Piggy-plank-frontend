@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AuthPage from './pages/AuthPage';
 import FeedPage from './pages/FeedPage';
 import GroupsPage from './pages/GroupsPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
             <Route path="/" element={<AuthPage />} />
             <Route path="/home" element={<FeedPage />} /> 
             <Route path="/groups" element={<GroupsPage />} />
-            <Route path="/profile" element={<h1 className="text-2xl font-bold text-center mt-10">Perfil y Logros</h1>} />
+            <Route path="/profile" element={<ProfilePage />} />
           </Routes>
         </main>
       </div>
