@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AuthPage from './pages/AuthPage';
-import FeedPage from './pages/FeedPage'; // Añade esta línea
+import FeedPage from './pages/FeedPage';
+import GroupsPage from './pages/GroupsPage';
 
 function App() {
   return (
@@ -9,11 +10,8 @@ function App() {
         <main className="container mx-auto p-4 max-w-md">
           <Routes>
             <Route path="/" element={<AuthPage />} />
-            
-            {/* Sustituye el <h1> por FeedPage */}
             <Route path="/home" element={<FeedPage />} /> 
-            
-            <Route path="/groups" element={<h1 className="text-2xl font-bold text-center mt-10">Mis Grupos y Buscar</h1>} />
+            <Route path="/groups" element={<GroupsPage />} />
             <Route path="/profile" element={<h1 className="text-2xl font-bold text-center mt-10">Perfil y Logros</h1>} />
           </Routes>
         </main>
