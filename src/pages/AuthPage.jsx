@@ -1,231 +1,74 @@
-import { useState } from "react"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Button } from "@/components/ui/button"
-import { User, Mail, Lock, PiggyBank } from "lucide-react"
+import { useState } from "react";
+import { ArrowRight, Lock, Mail, User as UserIcon } from "lucide-react";
 
 export default function AuthPage() {
-  const [mode, setMode] = useState("login")
-
-  // Login state
-  const [loginEmail, setLoginEmail] = useState("")
-  const [loginPassword, setLoginPassword] = useState("")
-
-  // Register state
-  const [username, setUsername] = useState("")
-  const [registerEmail, setRegisterEmail] = useState("")
-  const [registerPassword, setRegisterPassword] = useState("")
-  const [acceptedRgpd, setAcceptedRgpd] = useState(false)
-
-  const handleLogin = (e) => {
-    e.preventDefault()
-    console.log("[v0] Login:", { email: loginEmail, password: loginPassword })
-  }
-
-  const handleRegister = (e) => {
-    e.preventDefault()
-    if (!acceptedRgpd) return
-    console.log("[v0] Register:", {
-      username,
-      email: registerEmail,
-      password: registerPassword,
-      acceptedRgpd,
-    })
-  }
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <main className="flex min-h-svh items-center justify-center bg-background px-4 py-8">
-      <div className="w-full max-w-md">
-        {/* Brand */}
-        <div className="mb-6 flex flex-col items-center text-center">
-          <div className="flex size-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/30">
-            <PiggyBank className="size-8" aria-hidden="true" />
-          </div>
-          <h1 className="mt-3 text-2xl font-bold tracking-tight text-foreground">Piggy Plank</h1>
-          <p className="mt-1 text-sm text-muted-foreground text-pretty">
-            Gamifica tu deporte y supera cada reto físico
+    <div className="min-h-screen bg-gray-100 flex justify-center">
+      <div className="relative flex h-screen w-full max-w-md flex-col justify-center bg-gray-50 px-6 shadow-xl">
+        {/* Logo/Icono del Cerdito */}
+        <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full bg-orange-500 shadow-lg shadow-orange-500/40 ring-4 ring-white">
+          <span className="text-5xl">🐷</span>
+        </div>
+
+        {/* Textos de Cabecera */}
+        <div className="text-center mb-10">
+          <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Piggy Plank</h1>
+          <p className="text-sm font-medium text-gray-500 mt-2">
+            {isLogin ? "Inicia sesión para continuar" : "Únete a la comunidad de atletas"}
           </p>
         </div>
 
-        <Card className="border-border/60 shadow-xl shadow-black/5">
-          <CardHeader className="pb-2">
-            {/* Tabs */}
-            <div
-              role="tablist"
-              aria-label="Modo de autenticación"
-              className="grid grid-cols-2 gap-1 rounded-xl bg-muted p-1"
-            >
-              <button
-                type="button"
-                role="tab"
-                aria-selected={mode === "login"}
-                onClick={() => setMode("login")}
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                  mode === "login"
-                    ? "bg-card text-foreground shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                Iniciar Sesión
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={mode === "register"}
-                onClick={() => setMode("register")}
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                  mode === "register"
-                    ? "bg-card text-foreground shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                Registrarse
-              </button>
+        {/* Formulario */}
+        <form className="flex flex-col gap-4">
+          {!isLogin && (
+            <div className="relative">
+              <UserIcon className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Nombre de usuario"
+                className="h-14 w-full rounded-2xl border border-gray-200 bg-white pl-12 pr-4 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 shadow-sm"
+              />
             </div>
-          </CardHeader>
+          )}
+          <div className="relative">
+            <Mail className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+            <input
+              type="email"
+              placeholder="Correo electrónico"
+              className="h-14 w-full rounded-2xl border border-gray-200 bg-white pl-12 pr-4 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 shadow-sm"
+            />
+          </div>
+          <div className="relative">
+            <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+            <input
+              type="password"
+              placeholder="Contraseña"
+              className="h-14 w-full rounded-2xl border border-gray-200 bg-white pl-12 pr-4 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 shadow-sm"
+            />
+          </div>
 
-          <CardContent>
-            {mode === "login" ? (
-              <form onSubmit={handleLogin} className="flex flex-col gap-4">
-                <div className="flex flex-col gap-2">
-                  <Label htmlFor="login-email">Correo electrónico</Label>
-                  <div className="relative">
-                    <Mail
-                      className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-                      aria-hidden="true"
-                    />
-                    <Input
-                      id="login-email"
-                      type="email"
-                      placeholder="tucorreo@ejemplo.com"
-                      className="pl-9"
-                      value={loginEmail}
-                      onChange={(e) => setLoginEmail(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <Label htmlFor="login-password">Contraseña</Label>
-                  <div className="relative">
-                    <Lock
-                      className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-                      aria-hidden="true"
-                    />
-                    <Input
-                      id="login-password"
-                      type="password"
-                      placeholder="••••••••"
-                      className="pl-9"
-                      value={loginPassword}
-                      onChange={(e) => setLoginPassword(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <Button type="submit" size="lg" className="mt-2 w-full font-semibold">
-                  Entrar
-                </Button>
-              </form>
-            ) : (
-              <form onSubmit={handleRegister} className="flex flex-col gap-4">
-                <div className="flex flex-col gap-2">
-                  <Label htmlFor="register-username">Nombre de usuario</Label>
-                  <div className="relative">
-                    <User
-                      className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-                      aria-hidden="true"
-                    />
-                    <Input
-                      id="register-username"
-                      type="text"
-                      placeholder="atleta_01"
-                      className="pl-9"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <Label htmlFor="register-email">Correo electrónico</Label>
-                  <div className="relative">
-                    <Mail
-                      className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-                      aria-hidden="true"
-                    />
-                    <Input
-                      id="register-email"
-                      type="email"
-                      placeholder="tucorreo@ejemplo.com"
-                      className="pl-9"
-                      value={registerEmail}
-                      onChange={(e) => setRegisterEmail(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <Label htmlFor="register-password">Contraseña</Label>
-                  <div className="relative">
-                    <Lock
-                      className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-                      aria-hidden="true"
-                    />
-                    <Input
-                      id="register-password"
-                      type="password"
-                      placeholder="••••••••"
-                      className="pl-9"
-                      value={registerPassword}
-                      onChange={(e) => setRegisterPassword(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 rounded-lg bg-muted/60 p-3">
-                  <Checkbox
-                    id="rgpd"
-                    checked={acceptedRgpd}
-                    onCheckedChange={(checked) => setAcceptedRgpd(checked === true)}
-                    className="mt-0.5"
-                  />
-                  <Label htmlFor="rgpd" className="text-sm font-normal leading-relaxed text-muted-foreground">
-                    Acepto la política de privacidad y el tratamiento de mis datos (RGPD)
-                  </Label>
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="mt-1 w-full font-semibold"
-                  disabled={!acceptedRgpd}
-                >
-                  Crear cuenta
-                </Button>
-              </form>
-            )}
-          </CardContent>
-        </Card>
-
-        <p className="mt-6 text-center text-xs text-muted-foreground">
-          {mode === "login" ? "¿No tienes cuenta? " : "¿Ya tienes cuenta? "}
           <button
             type="button"
-            onClick={() => setMode(mode === "login" ? "register" : "login")}
-            className="font-semibold text-primary hover:underline"
+            className="mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-orange-500 px-4 text-sm font-bold text-white shadow-md shadow-orange-500/20 transition-all hover:bg-orange-600 active:scale-95"
           >
-            {mode === "login" ? "Regístrate" : "Inicia sesión"}
+            {isLogin ? "Entrar a mi cuenta" : "Crear mi perfil"}
+            <ArrowRight className="h-5 w-5" />
           </button>
-        </p>
+        </form>
+
+        {/* Botón para alternar Login/Registro */}
+        <div className="mt-8 text-center">
+          <button
+            type="button"
+            onClick={() => setIsLogin(!isLogin)}
+            className="text-sm font-bold text-gray-500 transition-colors hover:text-orange-500 focus:outline-none"
+          >
+            {isLogin ? "¿No tienes cuenta? Regístrate aquí" : "¿Ya eres miembro? Inicia sesión"}
+          </button>
+        </div>
       </div>
-    </main>
-  )
+    </div>
+  );
 }
