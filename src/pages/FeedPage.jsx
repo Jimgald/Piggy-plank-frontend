@@ -105,10 +105,10 @@ function WorkoutCard({ workout }) {
         </div>
       </div>
 
-      {/* Content */}
+    
       <p className="px-4 py-3 text-sm leading-relaxed text-gray-700">{workout.text}</p>
 
-      {/* Image placeholder */}
+      {/* Imagen placeholder */}
       <div className={`mx-4 mb-3 flex h-44 items-end rounded-xl shadow-inner bg-gradient-to-br ${workout.imageGradient}`}>
         <span className="m-3 rounded-lg bg-black/30 px-2.5 py-1 text-xs font-semibold tracking-wide text-white backdrop-blur-md">
           {workout.imageLabel}
@@ -182,7 +182,7 @@ function MotivationalPiggy() {
     "Sudor hoy, orgullo mañana. Venga, dame un entreno.",
   ];
   
-  // Elige una frase al azar cada vez que carga el componente
+
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
   return (
@@ -192,7 +192,7 @@ function MotivationalPiggy() {
       </div>
       <div className="relative rounded-2xl rounded-tl-none bg-white p-3 shadow-sm border border-gray-100">
         <p className="text-sm font-medium text-gray-700 italic">"{randomQuote}"</p>
-        {/* Triangulito del bocadillo */}
+        {/* bocadillo */}
         <div className="absolute -left-2 top-0 h-4 w-4 bg-white border-l border-b border-gray-100" style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}></div>
       </div>
     </div>

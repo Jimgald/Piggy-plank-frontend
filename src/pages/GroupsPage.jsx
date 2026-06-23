@@ -63,7 +63,7 @@ function GroupsHeader() {
 function GroupActions() {
   return (
     <section className="flex flex-col gap-3">
-      {/* Join with code */}
+     
       <div className="rounded-2xl bg-white p-4 shadow-sm border border-gray-100/50">
         <label htmlFor="invite-code" className="mb-2 block text-sm font-semibold text-gray-700">
           Unirse con código
@@ -85,7 +85,7 @@ function GroupActions() {
         </div>
       </div>
 
-      {/* Create new group */}
+    
       <button
         type="button"
         className="flex h-12 w-full items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white text-sm font-bold text-gray-700 shadow-sm transition-all hover:bg-gray-50 active:scale-95 focus:outline-none focus:ring-2 focus:ring-orange-500/20"

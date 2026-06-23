@@ -7,7 +7,7 @@ export default function AuthPage() {
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center">
       <div className="relative flex h-screen w-full max-w-md flex-col justify-center bg-gray-50 px-6 shadow-xl">
-        {/* Logo/Icono del Cerdito */}
+        {/* Icono del Cerdito */}
         <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full bg-orange-500 shadow-lg shadow-orange-500/40 ring-4 ring-white">
           <span className="text-5xl">🐷</span>
         </div>

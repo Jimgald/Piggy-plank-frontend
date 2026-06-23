@@ -1,14 +1,13 @@
 import axios from 'axios';
 
-// Configuramos la URL base de tu backend local
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // Asegúrate de que coincida con el puerto de tu backend
+  baseURL: 'http://localhost:5000/api', 
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Interceptor: Inyecta el token de sesión en cada petición si existe
+//Token de sesión
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {

@@ -11,9 +11,9 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center">
       <div className="relative mx-auto flex min-h-screen w-full max-w-md flex-col bg-gray-50 shadow-xl">
-        {/* Scrollable content */}
+       
         <main className="flex-1 overflow-y-auto px-5 pb-6 pt-8 scrollbar-hide">
-          {/* Header / Hero */}
+          {/* Header */}
           <header className="flex flex-col items-center text-center">
             <div className="flex h-24 w-24 items-center justify-center rounded-full bg-orange-500 text-3xl font-bold text-white shadow-lg shadow-orange-500/30 ring-4 ring-white">
               JG
@@ -104,7 +104,7 @@ function BottomNav() {
         </span>
       </button>
 
-      {/* Profile Button (Active) */}
+    
       <button className="flex flex-1 flex-col items-center gap-1 py-1 text-xs font-semibold text-orange-500 transition-colors focus:outline-none">
         <Users className="hidden" />
         <User className="h-6 w-6 stroke-[2.5px]" />
